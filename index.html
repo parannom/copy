@@ -1,0 +1,62 @@
+
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <title>슬롯 머신 로그라이크 게임</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<canvas id="gameCanvas" width="800" height="200"></canvas>
+
+<div id="slot-machine">
+    <button id="spin-button">스핀</button>
+    <div id="slot-container">
+        <div class="slot">?</div>
+        <div class="slot">?</div>
+        <div class="slot">?</div>
+    </div>
+    <div id="slot-result"></div>
+</div>
+
+<div id="stats">
+    <p>스테이지: <span id="stage">1</span> | 최고 스테이지: <span id="max-stage">1</span></p>
+    <p>공격력: <span id="attack">10</span> | 방어력: <span id="defense">5</span> | 체력: <span id="health">100</span></p>
+    <p>돈: <span id="gold">0</span></p>
+</div>
+
+<div id="upgrade-cards">
+    <div class="card">
+        <h3>공격력 업그레이드</h3>
+        <p>+5 공격력</p>
+        <p>비용: <span id="attack-cost">50</span> 골드</p>
+        <button class="upgrade-button" data-type="attack">업그레이드</button>
+    </div>
+    <div class="card">
+        <h3>방어력 업그레이드</h3>
+        <p>+5 방어력</p>
+        <p>비용: <span id="defense-cost">50</span> 골드</p>
+        <button class="upgrade-button" data-type="defense">업그레이드</button>
+    </div>
+    <div class="card">
+        <h3>체력 업그레이드</h3>
+        <p>+50 체력</p>
+        <p>비용: <span id="health-cost">50</span> 골드</p>
+        <button class="upgrade-button" data-type="health">업그레이드</button>
+    </div>
+</div>
+
+<div id="controls">
+    <button id="reset-button">초기화</button>
+</div>
+
+<div id="battle-log">
+    <!-- 로그가 표시될 공간 -->
+</div>
+
+<script src="game.js"></script>
+
+</body>
+</html>
