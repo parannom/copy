@@ -373,7 +373,7 @@ function animateAttack(attacker, defender, callback) {
 
 function endBattle() {
     if (player.health <= 0) {
-        logMessage('패배하였습니다...');
+        logMessage('패배하였습니다. 스테이지 1부터 다시 시작합니다.');
         player.health = player.maxHealth; // 체력 회복
         stage = 1; // 스테이지 초기화
         isBattling = false;
