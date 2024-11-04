@@ -196,7 +196,8 @@ spinButton.addEventListener('click', function() {
     let actions = [
         { action: 'nothing', text: '이동', symbol: '⬆' },
         { action: 'battle', text: '전투', symbol: '⚔' },
-        { action: 'treasure', text: '보물상자', symbol: '💰' }
+        { action: 'treasure', text: '보물상자', symbol: '💰' },
+        { action: 'heal', text: '체력 회복', symbol: '❤️' }
     ];
     let result = actions[Math.floor(Math.random() * actions.length)];
     animateSlots(result);
@@ -206,7 +207,7 @@ function animateSlots(result) {
     isSpinning = true;
     spinButton.disabled = true;
     const slots = document.querySelectorAll('.slot');
-    let symbols = ['⬆', '⚔', '💰'];
+    let symbols = ['⬆', '⚔', '💰','❤️'];
     let iterations = 10;
     let index = 0;
 
@@ -236,6 +237,16 @@ function performAction(action) {
             logMessage(`${goldFound} 골드를 찾았습니다!`);
             stageUp();
             saveGameData();
+            updateGame();
+            isSpinning = false;
+            if (!isBattling) {
+                spinButton.disabled = false;
+            }
+        } else if (action === 'heal') {
+            // 체력 회복 로직
+            let healAmount = Math.floor(player.maxHealth * 0.2); // 최대 체력의 20%만큼 회복
+            player.health = Math.min(player.health + healAmount, player.maxHealth); // 최대 체력을 넘지 않도록 제한
+            logMessage(`체력이 ${healAmount}만큼 회복되었습니다!`);
             updateGame();
             isSpinning = false;
             if (!isBattling) {
@@ -328,7 +339,7 @@ function battle() {
                 }
             });
         });
-    }, 1000);
+    }, 500);
 }
 
 function animateAttack(attacker, defender, callback) {
